@@ -1,0 +1,36 @@
+/* Print stylesheet (Ch. 6): linked with media="print" */
+body {
+  background: #fff none;
+  color: #000;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 12pt;
+  line-height: 1.4;
+  display: block;
+}
+/* Hide non-essential content */
+header, .footer-links, .icon, .parallax::before { display: none; }
+main { max-width: none; padding: 0; }
+.page-title { font-size: 24pt; color: #000; }
+h2, h3, .hero-text h2 { color: #000; }
+h2 { font-size: 16pt; }
+section, .link-cards a, .pullquote {
+  background: #fff;
+  border: 1px solid #999;
+  color: #000;
+  break-inside: avoid;
+}
+.parallax { background: #fff none; padding: 14pt 20pt; }
+blockquote, dd, dt, .role, .kicker, figcaption { color: #000; }
+a { color: #000; text-decoration: underline; }
+.hero-photo::before, .hobby-photo::before { display: none; }
+.btn, form { display: none; }
+footer { border-top: 1px solid #000; color: #000; font-size: 10pt; }
+/* Hide decorative grass and photo shadows */
+.hero-photo::after, footer::before, .parallax::after { display: none; }
+section, .hero, .link-cards a, .page-title, .section-title { box-shadow: none; }
+.hero, .page-title, .section-title { background: #fff; border: 1px solid #999; color: #000; }
+footer { background: #fff; }
+.parallax blockquote { color: #000; text-shadow: none; }
+body::before { display: none; }
+/* Effects layer never prints */
+.fx-pollen, .fx-progress, .bg-media, .fx-item, .hero::before, .eq, .rotator { display: none !important; }

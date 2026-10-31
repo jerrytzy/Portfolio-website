@@ -1,0 +1,1021 @@
+/* ===================================================================
+   Portfolio Stylesheet
+   Jerence Christmir Brosas — BSIT, Lyceum of the Philippines University Manila
+   Theme: a quiet Vinland Saga farmland morning
+   Palette: meadow gold, sky mist, towel cream, pine ink, moss green
+   Type: Shippori Mincho (display) + Zen Maru Gothic (body)
+=================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
+
+:root {
+  --sky: #a9c6cf;
+  --mist: #e6efec;
+  --paper: rgba(250, 246, 229, 0.9);        /* towel cream, slightly see-through */
+  --paper-solid: #faf6e5;
+  --paper-soft: rgba(255, 252, 240, 0.65);
+  --gold: #d9b933;
+  --gold-deep: #86690f;
+  --moss: #4a6a24;
+  --moss-deep: #364d1a;
+  --pine: #2c3622;                          /* main text */
+  --text-muted: #55563f;
+  --text-faint: #6c6c52;
+  --line: rgba(74, 106, 36, 0.24);
+  --shadow: 0 6px 22px rgba(60, 70, 20, 0.14);
+  --radius: 12px;
+  --max: 880px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: #d8dc9a;
+  color: var(--pine);
+  font-family: 'Zen Maru Gothic', 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* The meadow: a fixed layer behind everything (works on phones too,
+   where background-attachment: fixed is unreliable) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(230, 239, 236, 0.28), rgba(250, 246, 220, 0.06)),
+    url('images/field-bg.jpg') center bottom / cover no-repeat;
+}
+
+a { color: inherit; }
+
+/* Flexible images (Ch. 7) */
+img { max-width: 100%; height: auto; }
+
+/* Link pseudo-classes (Ch. 6): LoVe-HAfocus order */
+main a:link { color: var(--moss); }
+main a:visited { color: #7b6a45; }
+main a:hover { color: var(--moss-deep); text-decoration: none; }
+main a:focus-visible, nav a:focus-visible, .footer-links a:focus-visible {
+  outline: 2px solid var(--moss);
+  outline-offset: 3px;
+}
+main a:active { color: var(--gold-deep); }
+
+/* ---------- Header / Nav ---------- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 40px;
+  background-color: rgba(238, 244, 238, 0.82);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.brand {
+  font-family: 'Shippori Mincho', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--pine);
+  text-decoration: none;
+}
+
+.brand span { color: var(--gold-deep); }
+
+header h1 {
+  display: none; /* replaced visually by .brand; kept in markup for semantics */
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li { margin: 0; }
+
+nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 15px;
+  font-weight: 500;
+  padding-bottom: 4px;
+  transition: color 0.2s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--gold);
+  transition: width 0.25s ease;
+}
+
+nav a:hover,
+nav a[aria-current="page"] {
+  color: var(--pine);
+}
+
+nav a:hover::after,
+nav a[aria-current="page"]::after {
+  width: 100%;
+}
+
+/* ---------- Main layout ---------- */
+main {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 56px 24px 110px;
+}
+
+.page-title {
+  display: inline-block;
+  font-family: 'Shippori Mincho', Georgia, serif;
+  font-weight: 700;
+  font-size: 38px;
+  line-height: 1.2;
+  margin: 0 0 28px;
+  padding: 8px 30px 10px;
+  color: var(--pine);
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Hero (home page) ---------- */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  padding: 44px 48px 48px;
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 36px;
+}
+
+.hero-text { flex: 1.2; }
+
+.hero-text .kicker {
+  font-family: 'Shippori Mincho', Georgia, serif;
+  font-weight: 500;
+  color: var(--moss);
+  font-size: 18px;
+  margin: 0 0 6px;
+}
+
+.hero-text h2 {
+  font-family: 'Shippori Mincho', Georgia, serif;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1.15;
+  margin: 0 0 14px;
+  color: var(--pine);
+}
+
+.hero-text .role {
+  font-size: 17px;
+  color: var(--text-muted);
+  margin: 0 0 22px;
+}
+
+.hero-photo {
+  flex: 0 0 auto;
+  width: 220px;
+  height: 260px;
+  position: relative;
+}
+
+.hero-photo::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  z-index: 0;
+}
+
+.hero-photo img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+/* a tuft of grass growing in front of the portrait */
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  right: -34px;
+  bottom: -30px;
+  width: 150px;
+  height: 71px;
+  background: url('images/grass.png') no-repeat center bottom / contain;
+  filter: drop-shadow(0 1px 2px rgba(70, 55, 0, 0.35));
+  transform-origin: 50% 100%;
+  pointer-events: none;
+}
+
+/* ---------- Sections / cards ---------- */
+section {
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 32px;
+  margin-bottom: 22px;
+}
+
+h2 {
+  font-family: 'Shippori Mincho', Georgia, serif;
+  font-weight: 700;
+  font-size: 25px;
+  color: var(--pine);
+  margin-top: 0;
+}
+
+b, strong { color: var(--moss-deep); font-weight: 700; }
+
+/* Quotes */
+blockquote {
+  font-family: 'Shippori Mincho', Georgia, serif;
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 1.8;
+  color: var(--pine);
+  border-left: 3px solid var(--gold);
+  padding-left: 20px;
+  margin: 0;
+}
+
+/* Lists */
+ul, ol {
+  padding-left: 22px;
+  margin: 0;
+}
+
+li { margin-bottom: 8px; }
+
+/* Cards grid on home ("What You'll Find Here") */
+.link-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  list-style: none;
+  padding: 0;
+}
+
+.link-cards li { margin: 0; }
+
+.link-cards a {
+  display: block;
+  height: 100%;
+  padding: 22px 24px 20px;
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.link-cards a:hover { border-color: var(--gold-deep); background-color: var(--paper-solid); }
+
+.link-cards h3 {
+  font-family: 'Shippori Mincho', Georgia, serif;
+  font-weight: 700;
+  font-size: 19px;
+  margin: 0 0 6px;
+  color: var(--pine);
+}
+
+.link-cards p {
+  margin: 0;
+  font-size: 14.5px;
+  color: var(--text-muted);
+}
+
+/* ---------- About page ---------- */
+dl {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  row-gap: 12px;
+  column-gap: 16px;
+  margin: 0;
+}
+
+dt {
+  font-weight: 700;
+  color: var(--moss);
+  font-size: 14.5px;
+  align-self: center;
+}
+
+dd {
+  margin: 0;
+  color: var(--pine);
+  font-size: 16px;
+}
+
+/* ---------- Skills & Goals page ---------- */
+.skills-layout {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.skills-layout .skills-text { flex: 1; }
+
+.pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+}
+
+.pill-list li {
+  margin: 0;
+  padding: 7px 18px;
+  background-color: rgba(217, 185, 51, 0.2);
+  border: 1px solid rgba(134, 105, 15, 0.38);
+  border-radius: 999px;
+  font-size: 14.5px;
+  color: var(--pine);
+}
+
+.hobby-photo {
+  flex: 0 0 190px;
+  position: relative;
+  margin: 0;
+}
+
+.hobby-photo::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 100%;
+  height: 240px;
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  z-index: 0;
+}
+
+.hobby-photo img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.hobby-photo figcaption {
+  margin-top: 12px;
+  font-size: 13.5px;
+  color: var(--text-faint);
+  text-align: right;
+}
+
+/* Goals as a sequence — numbering is meaningful here */
+.goal-list {
+  list-style: none;
+  padding: 0;
+  counter-reset: goal;
+  margin: 0;
+}
+
+.goal-list li {
+  counter-increment: goal;
+  position: relative;
+  padding-left: 40px;
+  margin-bottom: 18px;
+}
+
+.goal-list li:last-child { margin-bottom: 0; }
+
+.goal-list li::before {
+  content: counter(goal, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: -1px;
+  font-family: 'Shippori Mincho', Georgia, serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--gold-deep);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  position: relative;
+  text-align: center;
+  padding: 30px 20px 28px;
+  background-color: rgba(44, 54, 34, 0.94);
+  color: #d9d8bf;
+  font-size: 13.5px;
+}
+
+/* grass growing along the top edge of the footer: two layers for depth */
+footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -50px;
+  height: 56px;
+  background:
+    url('images/grass.png') repeat-x 0 100% / auto 56px,
+    url('images/grass.png') repeat-x 90px 100% / auto 38px;
+  filter: drop-shadow(0 -1px 2px rgba(70, 55, 0, 0.35));
+  transform-origin: 50% 100%;
+  pointer-events: none;
+}
+
+/* ---------- Section title (home) ---------- */
+.section-title {
+  display: inline-block;
+  margin: 28px 0 18px;
+  padding: 6px 26px 8px;
+  font-size: 24px;
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+}
+
+/* ---------- CSS sprite icons (Ch. 6) ---------- */
+/* One file (images/icons-sprite.svg), four 24px icons side by side */
+.icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url('images/icons-sprite.svg') no-repeat;
+  opacity: 0.7;
+}
+.icon-home    { background-position: 0 0; }
+.icon-about   { background-position: -24px 0; }
+.icon-skills  { background-position: -48px 0; }
+.icon-contact { background-position: -72px 0; }
+nav a:hover .icon, nav a[aria-current="page"] .icon { opacity: 1; }
+
+/* ---------- Float (Ch. 6) ---------- */
+.float-photo {
+  float: left;
+  margin: 4px 22px 10px 0;
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+}
+
+.pullquote {
+  float: right;
+  width: 38%;
+  margin: 4px 0 12px 24px;
+  padding: 14px 18px;
+  border-left: 3px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  background-color: rgba(217, 185, 51, 0.16);
+  font-family: 'Shippori Mincho', Georgia, serif;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+/* overflow technique: container expands around its floated child */
+.clearfix { overflow: auto; }
+
+/* clear technique: footer always starts below any float */
+footer { clear: both; }
+
+/* ---------- Parallax band (Ch. 6) ---------- */
+/* The quote sits over the character art; the art stays fixed while the page scrolls */
+section.parallax {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 480px;
+  padding: 90px 48px 100px;
+  margin-top: 48px;
+  margin-bottom: 70px;
+  background-color: #8fb0bb;
+  background-image:
+    linear-gradient(90deg, rgba(28, 40, 26, 0.74) 0%, rgba(28, 40, 26, 0.42) 48%, rgba(28, 40, 26, 0) 78%),
+    url('images/character.jpg');
+  background-size: cover, cover;
+  background-position: center, 66% 40%;
+  background-attachment: scroll, fixed;
+  overflow: visible;
+}
+
+.parallax blockquote {
+  max-width: 440px;
+  color: #fbf7e6;
+  font-size: 22px;
+  border-left-color: var(--gold);
+  text-shadow: 0 1px 10px rgba(20, 30, 15, 0.6);
+}
+
+/* grass along the bottom of the band, overlapping its edge */
+.parallax::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -26px;
+  height: 76px;
+  background:
+    url('images/grass.png') repeat-x 40px 100% / auto 76px,
+    url('images/grass.png') repeat-x 0 100% / auto 50px;
+  filter: drop-shadow(0 1px 2px rgba(70, 55, 0, 0.4));
+  transform-origin: 50% 100%;
+  pointer-events: none;
+}
+
+/* A single gentle sway, used only on the grass */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-photo::after,
+  footer::before,
+  .parallax::after {
+    animation: sway 7s ease-in-out infinite;
+  }
+  footer::before { animation-delay: -2s; }
+  .parallax::after { animation-delay: -4s; }
+}
+
+@keyframes sway {
+  0%, 100% { transform: skewX(-1.6deg); }
+  50%      { transform: skewX(1.6deg); }
+}
+
+/* Footer link list: horizontal nav with display: inline */
+.footer-links { list-style: none; padding: 0; margin: 0 0 12px; }
+.footer-links li { display: inline; margin: 0 10px; }
+.footer-links a { color: #e9e6c8; text-decoration: none; font-size: 14px; }
+.footer-links a:hover { color: var(--gold); }
+.footer-links a:focus-visible { outline-color: var(--gold); }
+footer p { margin: 0; }
+
+/* ---------- Contact page ---------- */
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 24px;
+  align-items: start;
+}
+.contact-layout section { margin-bottom: 0; }
+
+.contact-list { list-style: none; padding: 0; margin: 14px 0 0; }
+.contact-list li { margin-bottom: 18px; }
+.contact-list strong {
+  display: block;
+  color: var(--moss);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+form fieldset { border: 0; margin: 0; padding: 0; }
+.field { margin-bottom: 18px; }
+.field label { display: block; margin-bottom: 6px; font-size: 14px; color: var(--text-muted); }
+.field input, .field textarea {
+  width: 100%;
+  padding: 11px 14px;
+  background-color: rgba(255, 253, 244, 0.85);
+  border: 1px solid rgba(74, 106, 36, 0.4);
+  border-radius: 8px;
+  color: var(--pine);
+  font: inherit;
+}
+.field textarea { min-height: 150px; resize: vertical; }
+.field input:focus, .field textarea:focus {
+  outline: 2px solid rgba(217, 185, 51, 0.6);
+  outline-offset: 1px;
+  border-color: var(--moss);
+}
+.btn {
+  padding: 11px 28px;
+  background-color: var(--moss);
+  border: 1px solid var(--moss-deep);
+  border-radius: 999px;
+  color: #fbf7e6;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.btn:hover { background-color: var(--moss-deep); }
+.btn:active { background-color: var(--pine); }
+.btn:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 3px; }
+.note { margin: 14px 0 0; font-size: 13.5px; color: var(--text-faint); }
+
+/* ---------- Feature query: grid layouts for modern browsers ---------- */
+@supports (display: grid) {
+  /* Page frame with named grid areas; footer stays at the bottom */
+  body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: "header" "main" "footer";
+    min-height: 100vh;
+  }
+  header { grid-area: header; }
+  main   { grid-area: main; width: 100%; }
+  footer { grid-area: footer; }
+
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px) {
+  header { padding: 14px 20px; }
+  nav ul { gap: 18px; }
+  main { padding: 36px 16px 100px; }
+  .page-title { font-size: 30px; padding: 6px 24px 8px; }
+
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 30px;
+    padding: 32px 22px 36px;
+  }
+  .hero-text h2 { font-size: 32px; }
+  .hero-photo { width: 180px; height: 210px; }
+  .hero-photo::after { right: -26px; width: 120px; height: 57px; }
+
+  .link-cards { grid-template-columns: 1fr; }
+
+  dl { grid-template-columns: 1fr; row-gap: 4px; }
+  dt { margin-top: 10px; }
+
+  .skills-layout { flex-direction: column-reverse; }
+  .hobby-photo { flex: 0 0 auto; width: 100%; max-width: 260px; margin: 0 auto; }
+
+  .float-photo { float: none; display: block; margin: 0 auto 18px; }
+  .pullquote { float: none; width: auto; margin: 0 0 18px; }
+  .contact-layout { grid-template-columns: 1fr; }
+  section { padding: 24px 22px; }
+
+  /* fixed backgrounds are unreliable on phones: the art scrolls with the band,
+     and the text gets a fuller wash so it stays readable */
+  section.parallax {
+    min-height: 320px;
+    padding: 60px 22px 76px;
+    background-image:
+      linear-gradient(180deg, rgba(28, 40, 26, 0.2) 0%, rgba(28, 40, 26, 0.72) 100%),
+      url('images/character.jpg');
+    background-attachment: scroll, scroll;
+    background-position: center, 62% 20%;
+    align-items: flex-end;
+  }
+  .parallax blockquote { font-size: 19px; max-width: none; }
+  nav a { gap: 6px; }
+}
+
+/* Tablet range */
+@media (min-width: 721px) and (max-width: 1024px) {
+  main { padding: 50px 28px 100px; }
+  .pullquote { width: 42%; }
+}
+
+@media (max-width: 480px) {
+  .icon { display: none; } /* tight space: text-only nav on small phones */
+  nav ul { gap: 14px; }
+}
+
+
+/* ===================================================================
+   PAGE BACKGROUNDS
+   Home keeps the original meadow (body::before above, untouched).
+   About = golden wheat field, Skills & Contact = looping video.
+=================================================================== */
+body.page-about::before {
+  background:
+    linear-gradient(rgba(250, 246, 220, 0.10), rgba(250, 246, 220, 0.02)),
+    url('images/about-field.jpg') center bottom / cover no-repeat;
+}
+
+/* video layer sits behind the page; ::before becomes a light wash on top of it */
+.bg-media {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  background: #c9b27a;
+}
+.bg-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+body.page-skills::before,
+body.page-contact::before {
+  background: linear-gradient(rgba(28, 30, 14, 0.16), rgba(28, 30, 14, 0.06));
+}
+
+/* cards let the moving background glow through a little */
+body.page-skills section,
+body.page-contact section,
+body.page-skills .page-title,
+body.page-contact .page-title {
+  background-color: rgba(250, 246, 229, 0.86);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+body.page-about section,
+body.page-about .page-title {
+  background-color: rgba(250, 246, 229, 0.9);
+}
+
+
+/* ===================================================================
+   EFFECTS TOGGLE (nav)
+=================================================================== */
+nav ul { align-items: center; }
+
+.fx-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 4px 14px 4px 5px;
+  background-color: rgba(255, 252, 240, 0.72);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.fx-toggle:hover { background-color: var(--paper-solid); border-color: var(--gold-deep); }
+.fx-toggle:focus-visible { outline: 2px solid var(--moss); outline-offset: 3px; }
+
+.fx-knob {
+  position: relative;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 18px;
+  border-radius: 999px;
+  background-color: #a9a98f;
+  transition: background-color 0.2s ease;
+}
+.fx-knob::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease;
+}
+.fx-toggle[aria-pressed="true"] .fx-knob { background-color: var(--moss); }
+.fx-toggle[aria-pressed="true"] .fx-knob::after { transform: translateX(14px); }
+
+
+/* ===================================================================
+   EFFECTS LAYER (all of it switches off with html.fx-off)
+=================================================================== */
+.fx-pollen {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.fx-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 20;
+  background: linear-gradient(90deg, var(--gold), #f1d765 60%, var(--moss));
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+/* master off switch for every keyframe animation */
+html.fx-off *,
+html.fx-off *::before,
+html.fx-off *::after { animation: none !important; }
+html.fx-off .fx-pollen,
+html.fx-off .fx-progress { display: none; }
+
+/* --- scroll reveals (JS adds .reveal; it removes it again once shown) --- */
+html:not(.fx-off) .reveal:not(.in) {
+  opacity: 0;
+  transform: translateY(22px);
+}
+html:not(.fx-off) .reveal-left:not(.in) { transform: translateX(-26px); }
+html:not(.fx-off) .reveal-pop:not(.in)  { transform: scale(0.82); }
+html:not(.fx-off) .reveal.in {
+  transition: opacity 0.7s ease var(--d, 0s), transform 0.8s cubic-bezier(0.2, 0.75, 0.2, 1) var(--d, 0s);
+}
+
+/* --- page-load sequence: header title, hero, photo --- */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes photo-in {
+  from { opacity: 0; transform: scale(0.9) rotate(-3deg); }
+  to   { opacity: 1; transform: none; }
+}
+html:not(.fx-off) .hero-text > * { animation: rise 0.85s cubic-bezier(0.2, 0.75, 0.2, 1) backwards; }
+html:not(.fx-off) .hero-text > :nth-child(1) { animation-delay: 0.10s; }
+html:not(.fx-off) .hero-text > :nth-child(2) { animation-delay: 0.22s; }
+html:not(.fx-off) .hero-text > :nth-child(3) { animation-delay: 0.34s; }
+html:not(.fx-off) .hero-text > :nth-child(4) { animation-delay: 0.46s; }
+html:not(.fx-off) .hero-text > :nth-child(5) { animation-delay: 0.58s; }
+html:not(.fx-off) .hero-photo { animation: photo-in 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s backwards; }
+
+/* --- the portrait floats; its gold frame drifts the other way --- */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-7px); }
+}
+@keyframes frame-drift {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(7px, 7px); }
+}
+html:not(.fx-off) .hero-photo img { animation: floaty 6.5s ease-in-out infinite; }
+html:not(.fx-off) .hero-photo::before { animation: frame-drift 6.5s ease-in-out infinite; }
+html:not(.fx-off) .hobby-photo::before { animation: frame-drift 7s ease-in-out infinite; }
+
+/* --- morning light slowly breathing across the hero card --- */
+.hero { position: relative; isolation: isolate; }
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(520px 300px at 12% -10%, rgba(240, 205, 70, 0.34), transparent 70%),
+    radial-gradient(380px 260px at 100% 110%, rgba(169, 198, 207, 0.30), transparent 70%);
+}
+@keyframes sunrise {
+  from { opacity: 0.35; }
+  to   { opacity: 1; }
+}
+html:not(.fx-off) .hero::before { animation: sunrise 5.5s ease-in-out infinite alternate; }
+
+/* --- rotating word in the hero --- */
+.rotator { margin: 0 0 14px; color: var(--moss-deep); font-weight: 500; }
+.rot-word {
+  display: inline-block;
+  font-family: 'Shippori Mincho', Georgia, serif;
+  font-weight: 700;
+  color: var(--gold-deep);
+  border-bottom: 2px solid var(--gold);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.rot-word.out { opacity: 0; transform: translateY(8px); }
+
+/* --- brand dot, nav icons --- */
+@keyframes dot-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.7); color: var(--gold); }
+}
+html:not(.fx-off) .brand span { display: inline-block; animation: dot-pulse 2.8s ease-in-out infinite; }
+@keyframes hop {
+  0%, 100% { transform: translateY(0); }
+  40%      { transform: translateY(-5px); }
+}
+html:not(.fx-off) nav a:hover .icon { animation: hop 0.45s ease; }
+
+/* --- tilt (set by JS) + card underline sweep --- */
+.tilt { transition: transform 0.18s ease-out, border-color 0.2s ease, background-color 0.2s ease; will-change: transform; }
+.link-cards a { position: relative; overflow: hidden; }
+.link-cards a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--moss));
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.35s ease;
+}
+.link-cards a:hover::after,
+.link-cards a:focus-visible::after { transform: scaleX(1); }
+
+/* --- skill pills --- */
+.pill-list li {
+  cursor: default;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.pill-list li:hover {
+  transform: translateY(-3px) rotate(-1.5deg);
+  background-color: rgba(217, 185, 51, 0.42);
+  box-shadow: 0 4px 12px rgba(134, 105, 15, 0.22);
+}
+
+/* --- little sound bars by the guitar photo --- */
+.eq {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 13px;
+  margin-right: 8px;
+  vertical-align: -1px;
+}
+.eq i {
+  width: 3px;
+  height: 100%;
+  border-radius: 2px;
+  background-color: var(--gold-deep);
+  transform-origin: 50% 100%;
+  transform: scaleY(0.4);
+}
+@keyframes eq-bar {
+  0%, 100% { transform: scaleY(0.25); }
+  50%      { transform: scaleY(1); }
+}
+html:not(.fx-off) .eq i { animation: eq-bar 0.9s ease-in-out infinite; }
+html:not(.fx-off) .eq i:nth-child(2) { animation-duration: 0.7s; animation-delay: -0.3s; }
+html:not(.fx-off) .eq i:nth-child(3) { animation-duration: 1.1s; animation-delay: -0.6s; }
+
+/* --- goal and hobby list rows --- */
+.goal-list li, main ol:not(.goal-list) li { transition: transform 0.2s ease; }
+.goal-list li:hover, main ol:not(.goal-list) li:hover { transform: translateX(6px); }
+.pullquote { transition: transform 0.25s ease; }
+.pullquote:hover { transform: rotate(-1deg) scale(1.02); }
+
+/* --- contact form --- */
+.field label { transition: color 0.2s ease; }
+.field:focus-within label { color: var(--moss-deep); }
+.field input, .field textarea { transition: box-shadow 0.2s ease, border-color 0.2s ease; }
+.field input:focus, .field textarea:focus { box-shadow: 0 0 0 5px rgba(217, 185, 51, 0.22); }
+.btn { position: relative; overflow: hidden; }
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.38) 50%, transparent 70%);
+  transform: translateX(-130%);
+  pointer-events: none;
+}
+.btn:hover::after { transform: translateX(130%); transition: transform 0.7s ease; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(54, 77, 26, 0.3); }
+.btn { transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease; }
+
+/* --- small screens: keep it light --- */
+@media (max-width: 720px) {
+  .fx-toggle { padding-right: 10px; }
+  .fx-pollen { opacity: 0.8; }
+  .rotator { text-align: center; }
+}
+@media (max-width: 480px) {
+  .fx-label { display: none; }
+  .fx-toggle { padding-right: 5px; }
+}

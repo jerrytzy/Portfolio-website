@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Contact - Jerence Christmir Brosas</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css" media="screen">
+    <link rel="stylesheet" href="print.css" media="print">
+    <script src="effects.js"></script>
+</head>
+<body class="page-contact">
+    <div class="bg-media" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="auto" poster="media/contact-poster.jpg">
+            <source src="media/contact-bg.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <header>
+        <h1>Contact</h1>
+        <a class="brand" href="index.html">Jerence<span>.</span>Brosas</a>
+        <nav>
+            <ul>
+                <li><a href="index.html"><span class="icon icon-home" aria-hidden="true"></span>Home</a></li>
+                <li><a href="about.html"><span class="icon icon-about" aria-hidden="true"></span>About</a></li>
+                <li><a href="skills.html"><span class="icon icon-skills" aria-hidden="true"></span>Skills &amp; Goals</a></li>
+                <li><a href="contact.html" aria-current="page"><span class="icon icon-contact" aria-hidden="true"></span>Contact</a></li>
+                <li class="fx-item"><button class="fx-toggle" type="button" aria-pressed="true" title="Turn animations and moving backgrounds on or off"><span class="fx-knob" aria-hidden="true"></span><span class="fx-label">Effects on</span></button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="page-title">Contact</h1>
+        <article class="contact-layout">
+            <section>
+                <h2>Get in Touch</h2>
+                <p>Have a question or want to say hello? Send me a message using the form, or use the details below.</p>
+                <ul class="contact-list">
+                    <li><strong>Email</strong> <a href="mailto:2024-1-01896@lpu.edu.ph">2024-1-01896@lpu.edu.ph</a></li>
+                    <li><strong>School</strong> Lyceum of the Philippines University &ndash; Manila</li>
+                    <li><strong>Course</strong> BS Information Technology, 3rd Year</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Send a Message</h2>
+                <form action="mailto:2024-1-01896@lpu.edu.ph" method="post" enctype="text/plain">
+                    <fieldset>
+                        <legend class="visually-hidden">Contact form</legend>
+                        <div class="field">
+                            <label for="name">Your name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="field">
+                            <label for="email">Your email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="field">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </fieldset>
+                </form>
+                <p class="note">This form opens your email app to send the message.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="skills.html">Skills &amp; Goals</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <p>&copy; 2026 Jerence Christmir Brosas. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
